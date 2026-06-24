@@ -12,9 +12,16 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
     "@vueuse/head": "^2.0.0",
+    "better-sqlite3": "^12.11.1",
+    "drizzle-orm": "^0.45.2",
     "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.1",
     "vue": "^3.5.38",
     "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^26.0.0",
+    "drizzle-kit": "^0.31.10"
   }
 }

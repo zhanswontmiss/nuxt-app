@@ -1,6 +1,7 @@
 import { usersTable } from "~~/server/db/schema";
 import { eq } from "drizzle-orm"
 import { compare } from "bcrypt-ts";
+import jwt from 'jsonwebtoken';
 
 export default defineEventHandler(async (event) => {
   const { username, password } = await readBody(event);
@@ -22,8 +23,15 @@ export default defineEventHandler(async (event) => {
   }
 
   if (!(await compare(password, user.password))) {
-    throw createError({ statusCode: 401, message: 'Invalid password or login.'})
+    throw createError({ statusCode: 401, message: 'Invalid username or password.'})
   }
 
-  return { success: true }
+  const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_PRIVATE!, 
+    {
+      algorithm: 'HS256',
+      expiresIn: '24h',
+    }
+  );
+
+  return { token }
 });

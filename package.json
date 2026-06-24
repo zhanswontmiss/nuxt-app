@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
     "@vueuse/head": "^2.0.0",
+    "bcrypt-ts": "^8.0.1",
     "better-sqlite3": "^12.11.1",
     "drizzle-orm": "^0.45.2",
     "nuxt": "^4.4.8",

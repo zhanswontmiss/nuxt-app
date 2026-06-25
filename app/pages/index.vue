@@ -12,6 +12,9 @@ useHead({
 </script>
 
 <template>
+  <div>
+    <NuxtImg src="/img/sea_otter.jfif" alt="Sea Otter" width="200" height="100" class="aspect-video" format="png" fit="contain" />
+  </div>
   <PageTitle>Hello World!</PageTitle>
   <NuxtLink to="/about">About</NuxtLink>
   {{ counter }}

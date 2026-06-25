@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const error = ref<string | null>(null);
+const navbarRefreshKey = useState<number>("navbarRefreshKey", () => 0);
 
 const submitForm = async () => {
   error.value = null;
@@ -31,11 +32,14 @@ const submitForm = async () => {
     return;
   }
 
-  if (result._data && result._data?.token) {
-    useCookie('jwt_token').value = result._data.token;
-  } else {
-    error.value = "There was an issue with the data body from the response."
+  if (!(result._data && result._data?.token)) {
+    error.value = "There was an issue with the data body from the response.";
+    return;
   }
+
+  useCookie("jwt_token").value = result._data.token;
+  navbarRefreshKey.value++;
+  await navigateTo('/');
 }
 
 const form = reactive({

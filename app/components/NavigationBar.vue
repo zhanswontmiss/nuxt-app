@@ -1,12 +1,8 @@
 <script setup lang="ts">
-interface User {
-  id: number,
-  username: string,
-}
+const refreshKey = useState<number>("navbarRefreshKey", () => 0);
+const user = ref<JwtUserInfo | null>(null);
 
-const user = ref<User | null>(null);
-
-onMounted(async () => {
+const verifyAuthentication = async () => {
   const token = useCookie("jwt_token");
 
   if (!token) return;
@@ -18,12 +14,20 @@ onMounted(async () => {
 
   if (!result.success) return;
 
-  user.value = ((result.user.user as any) as User)
+  user.value = result.user.user;
+}
+
+onMounted(async () => {
+  await verifyAuthentication();
+});
+
+watch(refreshKey, async () => {
+  await verifyAuthentication();
 })
 </script>
 
 <template>
-  <nav class="flex justify-between p-4 bg-neutral-400">
+  <nav class="flex justify-between p-4 bg-neutral-400" :key="refreshKey">
     <NuxtLink to="/">Website</NuxtLink>
     <ul class="inline-flex gap-4">
       <li>

@@ -1,10 +1,6 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <NavigationBar />
-  <div class="p-4">
+  <div class="flex h-[80vh]">
     <slot />
   </div>
 </template>

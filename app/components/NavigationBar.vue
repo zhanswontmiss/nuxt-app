@@ -32,14 +32,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <nav class="flex justify-between p-4 bg-neutral-400" :key="refreshKey">
-    <NuxtLink to="/">Website</NuxtLink>
+  <nav class="flex justify-between p-4 bg-neutral-700 shadow-md backdrop-blur-md" :key="refreshKey">
+    <NuxtLink to="/" class="font-black tracking-tight">The Best Website</NuxtLink>
 
-    <TransitionGroup tag="ul" class="inline-flex gap-4" name="fade-nav">
-      <li key="about">
-        <NuxtLink to="/about">About</NuxtLink>
-      </li>
-
+    <TransitionGroup tag="ul" class="inline-flex gap-4 text-sm items-center" name="fade-nav">
       <div v-if="!user" key="guest" class="inline-flex gap-4">
         <li>
           <NuxtLink to="/register">Register</NuxtLink>

@@ -53,13 +53,13 @@ const form = reactive({
     <form class="flex flex-col gap-2 items-center" @submit.prevent="submitForm">
       <div class="flex gap-2 items-center justify-center">
         <label for="username">Username: </label>
-        <input v-model="form.username" type="text" name="username" id="username" />
+        <input v-model="form.username" type="text" name="username" id="username" autocomplete="username" />
       </div>
       
 
       <div class="flex gap-2 items-center justify-center">
         <label for="password">Password: </label>
-        <input v-model="form.password" type="password" name="password" id="password" />
+        <input v-model="form.password" type="password" name="password" id="password" autocomplete="current-password" />
       </div>
 
       <button type="submit" class="px-6!">

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const counter = useState('count', () => 0)
+const counter = useState('count', () => 0);
 </script>
 
 <template>
-  <PageTitle>About</PageTitle>
-  {{ counter }}
+  <div>
+    <PageTitle>About</PageTitle>
+    {{ counter }}
+  </div>
 </template>

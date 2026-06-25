@@ -1,7 +1,13 @@
-import { drizzle } from "drizzle-orm/better-sqlite3"
+import { drizzle } from "drizzle-orm/libsql"
 import * as schema from '../db/schema'
 
-const db = drizzle(process.env.DATABASE_URL!, { schema });
+const db = drizzle({
+  connection: {
+    url: process.env.DATABASE_URL!,
+    authToken: process.env.DATABASE_TOKEN!,
+  },
+  schema
+});
 
 export function useDrizzle() {
     return db;
